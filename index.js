@@ -38,7 +38,7 @@ and should return a number.
 For example, burger.discount("teacher") would return 13.5 and burger.discount("public") would return 16.2*/
 
 //creates a new property for the burger object and asigns it the fucntion
-burger.discount = function discount(type) {
+burger.discount = function(type) {
 	
 	//if the passed in string is teacher
 	if (type === "teacher") {
@@ -143,11 +143,23 @@ console.log(getLastReview(reviews))
     {name:"Lauren", rating: 4, feedback: "Absolutely love that they have karaoke Fridays! Food and drink selection is okay."}]
 */
 
- function getReviewByRating(/* code here */) {
-    /* code here */
+function getReviewByRating(array, rating) {
+    //creates empty array
+	const collection = []
+	
+	for (const index in array) {
+		//if object rating is greater than or equal to passed in rating but less than the passed in rating + 1
+		if (array[index].rating >= rating && array[index].rating < rating + 1) {
+			//push the object to the array
+			collection.push(array[index]);
+		}
+	}
+	//return the new array
+	return collection;
   }
 
-  
+console.log(getReviewByRating(reviews, 4));
+
 /** STRETCH 2: Write a function called 'getLongestReview' that returns an array containing all reviews longer than 15 words. 
   
 Your function should accept: 
@@ -161,10 +173,29 @@ and should return an array of objects.
     {name: "Brett", rating: 3, feedback: "great selection of snacks and a nice cafe area to get work done during the day."},
     {name: "Julius", rating: 2, feedback: "I was largely unimpressed by this venue. Nothing special on the menu and too expensive. The atmosphere is polarizing, and not for me, but I think some would like it." }]
 */
-  function getLongReviews(/* code here */) {
-    /* code here */
+  function getLongReviews(array) {
+	//declare empty array
+	const collection = []
+	
+	for (const index in array) {
+		//extract feedback to variable
+		const feedback = array[index].feedback;
+		//split words in feedback to an array
+		const words = feedback.split(" ");
+		//get length of the array (number of words)
+		const len = words.length;
+		
+		//if number of words (length of array) is greater than 15
+		if (len > 15) {
+			//push the object to the array
+			collection.push(array[index]);
+		}
+	}
+	//return the new array
+	return collection;
   }
   
+console.log(getLongReviews(reviews));
 
 /* STRETCH 3:  This challenge is not related to the data above! 
 
@@ -184,7 +215,26 @@ The returned object should have the following characteristics:
 */
 
 
-function carMaker(/* code here */) {
-    /* code here */
-    
+function carMaker(odoReading) {
+	const newObj = {
+		odometer: odoReading,
+		drive: function (distance){
+			this.odometer = this.odometer + distance;
+			return this.odometer;
+		},
+	}
+    return newObj
 }
+
+const chevySonic = carMaker(314017)
+
+console.log(chevySonic.drive(142))
+
+
+
+
+
+
+
+
+
