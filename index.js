@@ -6,18 +6,18 @@ const breakfastBurrito = {name: "Breakfast Burrito", price: 16, category:"Breakf
 
 /* Task 1a: write a function to return more menu items with the same format as the items above. */
 
-function createMenuItem(name, price, category){
-    //declare and empty object
+function createMenuItem(name, price, category) {
+	//declare and empty object
 	const newMenuItem = {};
-	
+
 	//pass in arguments and assign them to new object properties
 	newMenuItem.name = name;
 	newMenuItem.price = price;
 	newMenuItem.category = category;
-	
+
 	//return the new object
 	return newMenuItem;
-}
+};
 
 /* Task 1b: use your function to create 3 more menu items. You may add any items to the menu that you'd like */
 
@@ -25,7 +25,7 @@ const omlet = createMenuItem('Omlet', 5, 'Breakfast');
 const germanChocCake = createMenuItem('German Chocolate Cake', 3, 'Dessert');
 const reuben = createMenuItem('Reuben', 5, 'Lunch');
 
-console.log(omlet, germanChocCake, reuben)
+console.log(omlet, germanChocCake, reuben);
 
 /* Task 2: You're having a lunch special! 25% off for teachers and students, 10% off for everyone else. Add a method to your burger object that automatically calculates price given a string as a parameter. 
 
@@ -38,27 +38,28 @@ and should return a number.
 For example, burger.discount("teacher") would return 13.5 and burger.discount("public") would return 16.2*/
 
 //creates a new property for the burger object and asigns it the fucntion
-burger.discount = function(type) {
-	
+burger.discount = function (type) {
+
 	//if the passed in string is teacher
 	if (type === "teacher") {
 		//take 25% off the price
 		return this.price * .75;
-	//if string is student	
+		//if string is student	
 	} else if (type === "student") {
 		//take 10% off price
 		return this.price * .90;
-	//otherwise, it's full price
+		//otherwise, it's full price
 	} else {
 		return this.price;
 	}
-}
+};
 
-console.log(burger.discount("teacher"))
+console.log(burger.discount("teacher"));
 
 ///////////////Reviews (MVP)///////////////////
 
-const reviews = [{name: "Daniela", rating: 5, feedback:"Beautiful atmosphere and wonderful vegan options!"},
+const reviews = [
+	{name: "Daniela", rating: 5, feedback:"Beautiful atmosphere and wonderful vegan options!"},
     {name: "Jack", rating: 3, feedback:"A little too hipster for my taste, but the burger was decent, if overpriced"},
     {name: "Miranda", rating: 4, feedback:"fun trivia and cool vibes"},
     {name: "Wen", rating: 4.5, feedback:"I don't leave my house often, but when I do, it's for this place. Highly reccomend."},
@@ -66,7 +67,7 @@ const reviews = [{name: "Daniela", rating: 5, feedback:"Beautiful atmosphere and
     {name: "Julius", rating: 2, feedback: "I was largely unimpressed by this venue. Nothing special on the menu and too expensive. The atmosphere is polarizing, and not for me, but I think some would like it." },
     {name:"Lauren", rating: 4, feedback: "Absolutely love that they have karaoke Fridays! Food and drink selection is okay."},
     {name:"Reyna", rating: 3.5, feedback: ""},
-]
+];
 
 /* Task 3: Console.log just Julius' feedback */
 
@@ -75,7 +76,11 @@ console.log(reviews[5].feedback);
 /* Task 4: Add a new rating with your (fictitious) opinions of the restaurant in the same format as the reviews above. */
 
 //pushes a new object with properties to the array
-reviews.push({name: "Luke", rating: 5, feedback: "Love coming here to work. Food is good and background music is perfect. Nice spot"})
+reviews.push({
+	name: "Luke",
+	rating: 5,
+	feedback: "Love coming here to work. Food is good and background music is perfect. Nice spot"
+});
 
 console.log(reviews[8].feedback);
 
@@ -84,7 +89,7 @@ console.log(reviews[8].feedback);
 //sets the value for the called key
 reviews[7].feedback = "this place is chill with really cool people, great for getting work done on weekdays";
 
-console.log(reviews[7].feedback)
+console.log(reviews[7].feedback);
 
 /*  Task 6: Write a function to return a review based on the index of the review in the array.
 
@@ -99,13 +104,13 @@ and should return a string in the format `{name} gave the restaurant a {rating},
  * it will return `Daniela gave the restaurant a 5 star review and their feedback was: Beautiful atmosphere and wonderful vegan options!`
 */
 function getReviewByIndex(revCollection, index) {
-    
+
 	//returns the string with interpolated values for the passed array and index
 	return `${revCollection[index].name} gave the restaurant a ${revCollection[index].rating}, and their feedback was: ${revCollection[index].feedback}`;
-  }
-  
+};
 
-console.log(getReviewByIndex(reviews, 8))
+
+console.log(getReviewByIndex(reviews, 8));
 
 /* Task 7: Write a function to get information about the most recent review called `getLastReview`
 
@@ -117,17 +122,17 @@ and should return a string in the format `name} gave the restaurant a {rating}, 
 For example, if getLastReview is invoked passing the reviews array it will return `Reyna gave the restaurant a 3.5 star review and their feedback was: "this place is chill with really cool people, great for getting work done on weekdays"`.
 */
 function getLastReview(revCollection) {
-    
+
 	//sets the index to the last element
 	const index = revCollection.length - 1;
-	
+
 	//returns the string with interpolated values for the passed array and index
 	return `${revCollection[index].name} gave the restaurant a ${revCollection[index].rating}, and their feedback was: ${revCollection[index].feedback}`;
 
-  } 
+};
 
 // returns my review again because it was added (pushed) to the end of the array
-console.log(getLastReview(reviews))
+console.log(getLastReview(reviews));
 
 ///////////////🍔☕️🍽 STRETCH🍔☕️🍽////////////////////
 
@@ -144,9 +149,9 @@ console.log(getLastReview(reviews))
 */
 
 function getReviewByRating(array, rating) {
-    //creates empty array
+	//creates empty array
 	const collection = []
-	
+
 	for (const index in array) {
 		//if object rating is greater than or equal to passed in rating but less than the passed in rating + 1
 		if (array[index].rating >= rating && array[index].rating < rating + 1) {
@@ -156,7 +161,7 @@ function getReviewByRating(array, rating) {
 	}
 	//return the new array
 	return collection;
-  }
+};
 
 console.log(getReviewByRating(reviews, 4));
 
@@ -173,10 +178,10 @@ and should return an array of objects.
     {name: "Brett", rating: 3, feedback: "great selection of snacks and a nice cafe area to get work done during the day."},
     {name: "Julius", rating: 2, feedback: "I was largely unimpressed by this venue. Nothing special on the menu and too expensive. The atmosphere is polarizing, and not for me, but I think some would like it." }]
 */
-  function getLongReviews(array) {
+function getLongReviews(array) {
 	//declare empty array
 	const collection = []
-	
+
 	for (const index in array) {
 		//extract feedback to variable
 		const feedback = array[index].feedback;
@@ -184,7 +189,7 @@ and should return an array of objects.
 		const words = feedback.split(" ");
 		//get length of the array (number of words)
 		const len = words.length;
-		
+
 		//if number of words (length of array) is greater than 15
 		if (len > 15) {
 			//push the object to the array
@@ -193,8 +198,8 @@ and should return an array of objects.
 	}
 	//return the new array
 	return collection;
-  }
-  
+};
+
 console.log(getLongReviews(reviews));
 
 /* STRETCH 3:  This challenge is not related to the data above! 
@@ -216,25 +221,25 @@ The returned object should have the following characteristics:
 
 
 function carMaker(odoReading) {
+
+	//create the new object
 	const newObj = {
+		//create property and pass in argument
 		odometer: odoReading,
-		drive: function (distance){
+		//create property with function as value
+		drive: function (distance) {
+			//update the odometer property value to the current value + the passed in distance
 			this.odometer = this.odometer + distance;
+			//return the new value
 			return this.odometer;
 		},
 	}
-    return newObj
-}
+	//retrun the newly created object
+	return newObj
+};
 
-const chevySonic = carMaker(314017)
+//store new object created by function to variable
+const chevySonic = carMaker(314017);
 
-console.log(chevySonic.drive(142))
-
-
-
-
-
-
-
-
-
+//use the drive function in the new object
+console.log(chevySonic.drive(142));
